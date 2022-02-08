@@ -9,7 +9,7 @@ class DataTableWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: Get.width * 0.47,
+      width: Get.width * 0.54,
       child: Column(
         children: List.generate(
           4,

@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
@@ -58,9 +56,10 @@ class ImageScroller extends StatelessWidget {
                       onTap: () {
                         if (isPreview) {
                           controller.previewImage(i.value);
+                          print(i.value.toString());
                         } else {
                           controller.carsIndex.value = i.key;
-                          log(controller.carsIndex.value.toString());
+                          print(controller.carsIndex.value.toString());
                           controller.update();
                         }
                       },

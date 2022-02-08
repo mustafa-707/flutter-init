@@ -95,17 +95,19 @@ class FilterWidget extends StatelessWidget {
                               child: Container(
                                 margin:
                                     const EdgeInsets.only(left: 8, right: 8),
-                                width: 88,
+                                width: Get.width * 0.197,
                                 child: Center(
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                      Text(
-                                        controller.carsData.value.data![index]
-                                                .category ??
-                                            "",
-                                        style: const TextStyle(
-                                          color: ColorHelper.textColor,
+                                      FittedBox(
+                                        child: Text(
+                                          controller.carsData.value.data![index]
+                                                  .category ??
+                                              "",
+                                          style: const TextStyle(
+                                            color: ColorHelper.textColor,
+                                          ),
                                         ),
                                       ),
                                       controller.filterIndex1.value != (index)
@@ -150,8 +152,8 @@ class FilterWidget extends StatelessWidget {
                     children: [
                       GestureDetector(
                         onTap: () {
-                          if (controller.filterIndex2.value == 2) {
-                          } else if (controller.filterIndex1.value != 4) {
+                          if (controller.filterIndex2.value == 3) {
+                          } else if (controller.filterIndex1.value != -1) {
                           } else {
                             controller.filterIndex2.value =
                                 controller.filterIndex2.value - 1;
@@ -189,17 +191,19 @@ class FilterWidget extends StatelessWidget {
                               child: Container(
                                 margin:
                                     const EdgeInsets.only(left: 8, right: 8),
-                                width: 88,
+                                width: Get.width * 0.197,
                                 child: Center(
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                      Text(
-                                        controller.carsData.value
-                                                .data![index + 3].category ??
-                                            "",
-                                        style: const TextStyle(
-                                          color: ColorHelper.textColor,
+                                      FittedBox(
+                                        child: Text(
+                                          controller.carsData.value
+                                                  .data![index + 3].category ??
+                                              "",
+                                          style: const TextStyle(
+                                            color: ColorHelper.textColor,
+                                          ),
                                         ),
                                       ),
                                       controller.filterIndex2.value !=
@@ -220,8 +224,8 @@ class FilterWidget extends StatelessWidget {
                       ),
                       GestureDetector(
                         onTap: () {
-                          if (controller.filterIndex2.value == 4) {
-                          } else if (controller.filterIndex1.value != 4) {
+                          if (controller.filterIndex2.value == 5) {
+                          } else if (controller.filterIndex1.value != -1) {
                           } else {
                             controller.filterIndex2.value =
                                 controller.filterIndex2.value + 1;
@@ -277,17 +281,19 @@ class FilterWidget extends StatelessWidget {
                               child: Container(
                                 margin:
                                     const EdgeInsets.only(left: 8, right: 8),
-                                width: 88,
+                                width: Get.width * 0.197,
                                 child: Center(
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                      Text(
-                                        controller.carsData.value.data![index]
-                                                .cars?.first.date ??
-                                            "",
-                                        style: const TextStyle(
-                                          color: ColorHelper.textColor,
+                                      FittedBox(
+                                        child: Text(
+                                          controller.carsData.value.data![index]
+                                                  .cars?.first.date ??
+                                              "",
+                                          style: const TextStyle(
+                                            color: ColorHelper.textColor,
+                                          ),
                                         ),
                                       ),
                                       controller.filterIndex3.value != (index)
@@ -362,12 +368,17 @@ class FilterWidget extends StatelessWidget {
                                 children: [
                                   Center(
                                     child: Container(
-                                      margin: const EdgeInsets.only(
-                                          left: 43, right: 43),
-                                      child: Text(
-                                        index == 0 ? "New/almost new" : "Used",
-                                        style: const TextStyle(
-                                          color: ColorHelper.textColor,
+                                      margin: EdgeInsets.only(
+                                          left: Get.width * 0.083,
+                                          right: Get.width * 0.083),
+                                      child: FittedBox(
+                                        child: Text(
+                                          index == 0
+                                              ? "New/almost new"
+                                              : "Used",
+                                          style: const TextStyle(
+                                            color: ColorHelper.textColor,
+                                          ),
                                         ),
                                       ),
                                     ),

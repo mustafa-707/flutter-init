@@ -10,7 +10,7 @@ class ButtonsWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: Get.width * 0.5,
+      width: Get.width * 0.43,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.end,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -18,9 +18,27 @@ class ButtonsWidget extends StatelessWidget {
           Column(
             children: [
               InkWell(
-                onTap: () {},
+                onTap: () {
+                  Get.snackbar(
+                    "Woo",
+                    "Compare",
+                    snackPosition: SnackPosition.TOP,
+                    backgroundColor: ColorHelper.primaryColor,
+                    colorText: ColorHelper.backgroundColor,
+                    borderWidth: Get.context?.width,
+                    maxWidth: Get.context?.width,
+                    margin: const EdgeInsets.all(0),
+                    borderRadius: 8,
+                    snackStyle: SnackStyle.GROUNDED,
+                    duration: const Duration(seconds: 12),
+                    isDismissible: true,
+                    onTap: (x) {
+                      Get.back();
+                    },
+                  );
+                },
                 child: Container(
-                  width: 65,
+                  width: 62,
                   height: 50,
                   padding: const EdgeInsets.all(4),
                   decoration: BoxDecoration(
@@ -54,9 +72,27 @@ class ButtonsWidget extends StatelessWidget {
               ),
               const SizedBox(height: 4),
               InkWell(
-                onTap: () {},
+                onTap: () {
+                  Get.snackbar(
+                    "Woo",
+                    "Call",
+                    snackPosition: SnackPosition.TOP,
+                    backgroundColor: ColorHelper.primaryColor,
+                    colorText: ColorHelper.backgroundColor,
+                    borderWidth: Get.context?.width,
+                    maxWidth: Get.context?.width,
+                    margin: const EdgeInsets.all(0),
+                    borderRadius: 8,
+                    snackStyle: SnackStyle.GROUNDED,
+                    duration: const Duration(seconds: 12),
+                    isDismissible: true,
+                    onTap: (x) {
+                      Get.back();
+                    },
+                  );
+                },
                 child: Container(
-                  width: 65,
+                  width: 62,
                   height: 35,
                   padding: const EdgeInsets.all(6),
                   decoration: BoxDecoration(
@@ -76,9 +112,27 @@ class ButtonsWidget extends StatelessWidget {
               ),
               const SizedBox(height: 2),
               InkWell(
-                onTap: () {},
+                onTap: () {
+                  Get.snackbar(
+                    "Woo",
+                    "Report",
+                    snackPosition: SnackPosition.TOP,
+                    backgroundColor: ColorHelper.primaryColor,
+                    colorText: ColorHelper.backgroundColor,
+                    borderWidth: Get.context?.width,
+                    maxWidth: Get.context?.width,
+                    margin: const EdgeInsets.all(0),
+                    borderRadius: 8,
+                    snackStyle: SnackStyle.GROUNDED,
+                    duration: const Duration(seconds: 12),
+                    isDismissible: true,
+                    onTap: (x) {
+                      Get.back();
+                    },
+                  );
+                },
                 child: Container(
-                  width: 65,
+                  width: 62,
                   height: 22,
                   decoration: BoxDecoration(
                     color: ColorHelper.highMutedColor,
@@ -97,7 +151,7 @@ class ButtonsWidget extends StatelessWidget {
             ],
           ),
           const SizedBox(
-            width: 12,
+            width: 8,
           ),
           Column(
             children: [
@@ -107,7 +161,7 @@ class ButtonsWidget extends StatelessWidget {
                   controller.like();
                 },
                 child: Container(
-                  width: 65,
+                  width: 62,
                   height: 22,
                   decoration: BoxDecoration(
                     color: ColorHelper.onPrimary,
@@ -129,7 +183,7 @@ class ButtonsWidget extends StatelessWidget {
                   controller.dislike();
                 },
                 child: Container(
-                  width: 65,
+                  width: 62,
                   height: 22,
                   decoration: BoxDecoration(
                     color: ColorHelper.onPrimary,
@@ -147,9 +201,27 @@ class ButtonsWidget extends StatelessWidget {
               ),
               const SizedBox(height: 4),
               InkWell(
-                onTap: () {},
+                onTap: () {
+                  Get.snackbar(
+                    "Woo",
+                    "Request for advise",
+                    snackPosition: SnackPosition.TOP,
+                    backgroundColor: ColorHelper.primaryColor,
+                    colorText: ColorHelper.backgroundColor,
+                    borderWidth: Get.context?.width,
+                    maxWidth: Get.context?.width,
+                    margin: const EdgeInsets.all(0),
+                    borderRadius: 8,
+                    snackStyle: SnackStyle.GROUNDED,
+                    duration: const Duration(seconds: 12),
+                    isDismissible: true,
+                    onTap: (x) {
+                      Get.back();
+                    },
+                  );
+                },
                 child: Container(
-                  width: 65,
+                  width: 62,
                   height: 61,
                   padding: const EdgeInsets.all(4),
                   decoration: BoxDecoration(
@@ -184,11 +256,8 @@ class ButtonsWidget extends StatelessWidget {
               ),
             ],
           ),
-          const SizedBox(
-            width: 10,
-          ),
+          const Spacer(),
           SizedBox(
-            width: 35,
             child: Column(
               children: [
                 const SizedBox(
@@ -216,9 +285,7 @@ class ButtonsWidget extends StatelessWidget {
               ],
             ),
           ),
-          const SizedBox(
-            width: 6,
-          ),
+          const Spacer(),
         ],
       ),
     );
