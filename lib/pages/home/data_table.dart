@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:wootasali/utils/data/cars.dart';
+import 'package:wootasali/pages/home/model/car_model.dart';
 import 'package:wootasali/utils/theme/color_helper.dart';
 
 class DataTableWidget extends StatelessWidget {
-  const DataTableWidget({Key? key, required this.index}) : super(key: key);
-  final int index;
+  const DataTableWidget({Key? key, required this.data}) : super(key: key);
+  final Car data;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -24,12 +24,12 @@ class DataTableWidget extends StatelessWidget {
                     width: 90,
                     child: Text(
                       i == 0
-                          ? CarsListData.carsData[index]['name']
+                          ? data.name!
                           : i == 1
-                              ? CarsListData.carsData[index]['date']
+                              ? data.date!
                               : i == 2
-                                  ? CarsListData.carsData[index]['type']
-                                  : CarsListData.carsData[index]['gear'],
+                                  ? data.type!
+                                  : data.gear!,
                       style: const TextStyle(
                         color: ColorHelper.textColor,
                       ),
@@ -38,14 +38,12 @@ class DataTableWidget extends StatelessWidget {
                   const SizedBox(width: 8),
                   Text(
                     i == 0
-                        ? CarsListData.carsData[index]['price'] +
-                            " " +
-                            CarsListData.carsData[index]['currancy']
+                        ? data.price! + " " + data.currancy!
                         : i == 1
-                            ? CarsListData.carsData[index]['distance']
+                            ? data.distance!
                             : i == 2
-                                ? CarsListData.carsData[index]['version']
-                                : CarsListData.carsData[index]['petrol'],
+                                ? data.version!
+                                : data.petrol!,
                     style: TextStyle(
                       color: (i == 0)
                           ? ColorHelper.onPrimary

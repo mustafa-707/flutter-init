@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:wootasali/pages/home/controller/home_controller.dart';
 import 'package:wootasali/utils/theme/color_helper.dart';
 
 class ButtonsWidget extends StatelessWidget {
-  const ButtonsWidget({Key? key}) : super(key: key);
+  const ButtonsWidget({Key? key, required this.controller}) : super(key: key);
+  final HomeController controller;
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -100,7 +103,9 @@ class ButtonsWidget extends StatelessWidget {
             children: [
               const SizedBox(height: 2),
               InkWell(
-                onTap: () {},
+                onTap: () {
+                  controller.like();
+                },
                 child: Container(
                   width: 65,
                   height: 22,
@@ -120,7 +125,9 @@ class ButtonsWidget extends StatelessWidget {
               ),
               const SizedBox(height: 2),
               InkWell(
-                onTap: () {},
+                onTap: () {
+                  controller.dislike();
+                },
                 child: Container(
                   width: 65,
                   height: 22,
@@ -180,24 +187,34 @@ class ButtonsWidget extends StatelessWidget {
           const SizedBox(
             width: 10,
           ),
-          Column(
-            children: const [
-              Text(
-                "1000",
-                style: TextStyle(
-                  color: ColorHelper.highMutedColor,
+          SizedBox(
+            width: 35,
+            child: Column(
+              children: [
+                const SizedBox(
+                  height: 4,
                 ),
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              Text(
-                "1000",
-                style: TextStyle(
-                  color: ColorHelper.highMutedColor,
+                GetBuilder<HomeController>(
+                  builder: (co) => Text(
+                    "${co.carsData.value.data![controller.categoryIndex.value].cars![controller.carsIndex.value].likes ?? 0}",
+                    style: const TextStyle(
+                      color: ColorHelper.highMutedColor,
+                    ),
+                  ),
                 ),
-              ),
-            ],
+                const SizedBox(
+                  height: 10,
+                ),
+                GetBuilder<HomeController>(
+                  builder: (co) => Text(
+                    "${co.carsData.value.data![controller.categoryIndex.value].cars![controller.carsIndex.value].dislikes ?? 0}",
+                    style: const TextStyle(
+                      color: ColorHelper.highMutedColor,
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
           const SizedBox(
             width: 6,

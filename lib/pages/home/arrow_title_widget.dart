@@ -4,7 +4,8 @@ import 'package:wootasali/utils/theme/color_helper.dart';
 import 'package:wootasali/utils/theme/images_helper.dart';
 
 class ArrowTitleWidget extends StatelessWidget {
-  const ArrowTitleWidget({Key? key}) : super(key: key);
+  const ArrowTitleWidget({Key? key, this.title = ""}) : super(key: key);
+  final String title;
 
   @override
   Widget build(BuildContext context) {
@@ -13,9 +14,9 @@ class ArrowTitleWidget extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          const Text(
-            "ABBBB CARS",
-            style: TextStyle(
+          Text(
+            title,
+            style: const TextStyle(
               color: ColorHelper.primaryColor,
               fontSize: 28,
             ),

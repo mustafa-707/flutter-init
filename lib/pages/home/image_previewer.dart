@@ -1,48 +1,47 @@
+import 'dart:developer';
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:wootasali/pages/home/controller/home_controller.dart';
-import 'package:wootasali/utils/data/cars.dart';
 import 'package:wootasali/utils/lang/lang_service.dart';
 import 'package:wootasali/utils/theme/color_helper.dart';
 
 class ImageScroller extends StatelessWidget {
   const ImageScroller({
     Key? key,
-    required this.controller,
-    required this.index,
+    required this.images,
     this.height = 180.0,
     this.width = 98,
+    this.scroll = false,
+    required this.controller,
+    this.isPreview = true,
   }) : super(key: key);
-  final int index;
   final double? height;
   final double? width;
-
+  final bool scroll;
   final HomeController controller;
+  final bool isPreview;
+
+  final List<String> images;
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const SizedBox(
-          height: 25,
-        ),
         CarouselSlider(
           options: CarouselOptions(
             enlargeCenterPage: false,
             viewportFraction: width! / 100,
             height: height,
-            enableInfiniteScroll: true,
+            enableInfiniteScroll: scroll,
             disableCenter: true,
             onPageChanged: (index, reason) {
               controller.imageIndex.value = index;
             },
           ),
           carouselController: controller.carouselController,
-          items: (CarsListData.carsData[index]['image'] as List<String>)
-              .asMap()
-              .entries
-              .map((i) {
+          items: images.asMap().entries.map((i) {
             return Builder(
               builder: (BuildContext context) {
                 return Container(
@@ -57,7 +56,13 @@ class ImageScroller extends StatelessWidget {
                     borderRadius: BorderRadius.circular(12.0),
                     child: GestureDetector(
                       onTap: () {
-                        controller.previewImage(i.value);
+                        if (isPreview) {
+                          controller.previewImage(i.value);
+                        } else {
+                          controller.carsIndex.value = i.key;
+                          log(controller.carsIndex.value.toString());
+                          controller.update();
+                        }
                       },
                       child: CachedNetworkImage(
                         imageUrl: i.value,
