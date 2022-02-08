@@ -2,7 +2,7 @@
 const Stages kSelectedStage = Stages.dev;
 // const String kSelectedStage = 'prod';
 
-enum Stages{
+enum Stages {
   prod,
   staging,
   dev,
@@ -11,11 +11,11 @@ enum Stages{
 class BaseUrls {
   static String get url {
     if (kSelectedStage == Stages.dev) {
-      return 'https://api-uat.fire-beef.com/';
+      return '';
     } else if (kSelectedStage == Stages.staging) {
-      return 'https://api-dev.fire-beef.com/';
+      return '';
     } else {
-      return 'https://api-prod.fire-beef.com/';
+      return '';
     }
   }
 }

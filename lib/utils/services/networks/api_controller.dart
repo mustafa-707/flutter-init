@@ -1,15 +1,12 @@
 import 'dart:convert';
 import 'dart:developer';
-import 'package:awreportadmin/utils/services/networks/base_urls.dart';
-import 'package:awreportadmin/utils/services/networks/headers.dart';
+import 'package:wootasali/utils/services/networks/base_urls.dart';
+import 'package:wootasali/utils/services/networks/headers.dart';
 import 'package:http/http.dart' as http;
 
 class APIController {
   APIController();
 
-
-
-  
   static Future getData({
     String? endpointURL,
     List<String>? params,
@@ -33,13 +30,14 @@ class APIController {
         headers: _headers(headerType ?? HeadersTypes.none, token: headerToken),
       );
       if (res.statusCode == 200) {
-        Map<String,dynamic> body = (json.decode(res.body) as Map<String,dynamic>);
-        body.addAll({'isSucsses':true});
+        Map<String, dynamic> body =
+            (json.decode(res.body) as Map<String, dynamic>);
+        body.addAll({'isSucsses': true});
         log("Get Success $body");
         return json.encode(body);
-      } else if(res.statusCode == 401){
+      } else if (res.statusCode == 401) {
         // _tokenExpiredRefresher();
-      }else{
+      } else {
         throw Exception("getData ::: ${res.body}  -- ${res.statusCode}");
       }
     } catch (e) {
@@ -76,13 +74,15 @@ class APIController {
       );
 
       if (res.statusCode == 200) {
-        Map<String,dynamic> body = (json.decode(res.body) as Map<String,dynamic>);
-        body.addAll({'isSucsses':true});
+        Map<String, dynamic> body =
+            (json.decode(res.body) as Map<String, dynamic>);
+        body.addAll({'isSucsses': true});
         return json.encode(body);
-      } else if(res.statusCode == 401){
+      } else if (res.statusCode == 401) {
         //_tokenExpiredRefresher();
       } else {
-        throw Exception("postData ::: $endpointURL ${res.body}  -- ${res.statusCode}");
+        throw Exception(
+            "postData ::: $endpointURL ${res.body}  -- ${res.statusCode}");
       }
     } catch (e) {
       throw Exception("postData ::: $endpointURL" + e.toString());
@@ -118,11 +118,12 @@ class APIController {
       );
 
       if (res.statusCode == 200) {
-        Map<String,dynamic> body = (json.decode(res.body) as Map<String,dynamic>);
-        body.addAll({'isSucsses':true});
+        Map<String, dynamic> body =
+            (json.decode(res.body) as Map<String, dynamic>);
+        body.addAll({'isSucsses': true});
         return json.encode(body);
-      } else if(res.statusCode == 401){
-       // _tokenExpiredRefresher();
+      } else if (res.statusCode == 401) {
+        // _tokenExpiredRefresher();
       } else {
         throw Exception(
             "putData ::: $endpointURL ${res.body}  -- ${res.statusCode}");
@@ -161,20 +162,23 @@ class APIController {
       );
 
       if (res.statusCode == 200) {
-        Map<String,dynamic> body = (json.decode(res.body) as Map<String,dynamic>);
-        body.addAll({'isSucsses':true});
+        Map<String, dynamic> body =
+            (json.decode(res.body) as Map<String, dynamic>);
+        body.addAll({'isSucsses': true});
         return json.encode(body);
-      } else if(res.statusCode == 401){
+      } else if (res.statusCode == 401) {
         //_tokenExpiredRefresher();
       } else {
-        throw Exception("deleteData ::: $endpointURL ${res.body}  -- ${res.statusCode}");
+        throw Exception(
+            "deleteData ::: $endpointURL ${res.body}  -- ${res.statusCode}");
       }
     } catch (e) {
       throw Exception("deleteData ::: $endpointURL" + e.toString());
     }
   }
 
-  static Map<String, String> _headers(HeadersTypes? headerType, {String? token}) {
+  static Map<String, String> _headers(HeadersTypes? headerType,
+      {String? token}) {
     switch (headerType) {
       case HeadersTypes.none:
         return APIsHeaders.getHeader;

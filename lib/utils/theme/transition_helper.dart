@@ -1,7 +1,6 @@
 import 'dart:io';
-
-import 'package:awreportadmin/utils/lang/lang_service.dart';
 import 'package:get/get.dart';
+import 'package:wootasali/utils/lang/lang_service.dart';
 
 class TransitionHelper {
   static Transition normalTransition = _normalTransitionLogic();

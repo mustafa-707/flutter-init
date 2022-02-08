@@ -2,7 +2,5 @@
 
 class EndPoints {
   //main api
-  static const String GET_REPORTS = "user/ecommerce/products";
-
-
+  static const String GET = "";
 }

@@ -1,10 +1,13 @@
-import 'package:awreportadmin/app/route.dart';
-import 'package:awreportadmin/app/scroll_behavior.dart';
-import 'package:awreportadmin/utils/lang/lang_service.dart';
-import 'package:awreportadmin/utils/theme/theme.dart';
-import 'package:awreportadmin/utils/theme/theme_service.dart';
+import 'package:flutter/services.dart';
+import 'package:wootasali/app/route.dart';
+import 'package:wootasali/app/scroll_behavior.dart';
+import 'package:wootasali/utils/lang/lang_service.dart';
+import 'package:wootasali/utils/theme/color_helper.dart';
+import 'package:wootasali/utils/theme/theme.dart';
+import 'package:wootasali/utils/theme/theme_service.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:flutter_statusbarcolor_ns/flutter_statusbarcolor_ns.dart';
 
 class MainApp extends StatefulWidget {
   const MainApp({Key? key}) : super(key: key);
@@ -27,8 +30,8 @@ class _MainAppState extends State<MainApp> {
       translations: LocalizationService(),
       // locale: DevicePreview.locale(context), // Add the locale here
       // builder: DevicePreview.appBuilder, // Add the builder here
-      title: 'Fire Beef',
-      initialRoute: '/splashScreen',
+      title: 'Woo',
+      initialRoute: '/splash',
       opaqueRoute: Get.isOpaqueRouteDefault,
       popGesture: Get.isPopGestureEnable,
       navigatorKey: Get.key,
@@ -45,8 +48,21 @@ class _MainAppState extends State<MainApp> {
         );
         return child;
       },
-      routingCallback: (value) {
-        if (value?.current == '/splashScreen') {
+      routingCallback: (value) async {
+        if (value?.current == '/splash') {
+          await FlutterStatusbarcolor.setStatusBarColor(Colors.transparent);
+          await FlutterStatusbarcolor.setNavigationBarColor(
+              ColorHelper.backgroundColor);
+          const SystemUiOverlayStyle(
+            systemNavigationBarColor: ColorHelper.backgroundColor,
+            statusBarBrightness: Brightness.dark,
+            statusBarIconBrightness: Brightness.dark,
+            systemNavigationBarDividerColor: ColorHelper.backgroundColor,
+            systemNavigationBarIconBrightness: Brightness.dark,
+            statusBarColor: Colors.transparent,
+            systemStatusBarContrastEnforced: true,
+            systemNavigationBarContrastEnforced: true,
+          );
         }
       },
     );

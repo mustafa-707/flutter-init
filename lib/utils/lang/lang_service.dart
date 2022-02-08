@@ -1,17 +1,15 @@
-import 'package:awreportadmin/global/storage.dart';
-import 'package:awreportadmin/utils/lang/ar.dart';
-import 'package:awreportadmin/utils/lang/en.dart';
+import 'package:wootasali/global/storage.dart';
+import 'package:wootasali/utils/lang/ar.dart';
+import 'package:wootasali/utils/lang/en.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 
 class LocalizationService extends Translations {
-  
   // Default locale
   static final locale = GlobalStorage.getAppLanguage() == 'English'
-      ? primaryLocale
-      : fallbackLocale;
+      ? fallbackLocale
+      : primaryLocale;
 
   // fallbackLocale saves the day when the locale gets in trouble
   static const primaryLocale = Locale('en', 'US');
@@ -55,16 +53,16 @@ class LocalizationService extends Translations {
     return Get.locale;
   }
 
-  static TextStyle get fontfamilyByLocale {
-    if (Get.locale == const Locale('ar', 'AR')) {
-      return GoogleFonts.lato();
+  static String? get fontfamilyByLocale {
+    if (Get.locale == (const Locale('ar', 'AR'))) {
+      return "Arabic Font";
     } else {
-      return GoogleFonts.lato();
+      return "English Font";
     }
   }
 
   static bool get isArabic {
-    if (Get.locale == const Locale('ar', 'AR')) {
+    if (Get.locale == (const Locale('ar', 'AR'))) {
       return true;
     } else {
       return false;
@@ -72,7 +70,7 @@ class LocalizationService extends Translations {
   }
 
   static bool get isEnglish {
-    if (Get.locale == const Locale('en', 'US')) {
+    if (Get.locale == (const Locale('en', 'US'))) {
       return true;
     } else {
       return false;
@@ -106,7 +104,7 @@ class LocalizationService extends Translations {
     } else if (diff.inDays < 3) {
       return "منذ يومين";
     } else {
-      final dateFormat =  DateFormat('dd-MM-yyyy');
+      final dateFormat = DateFormat('dd-MM-yyyy');
       return dateFormat.format(date);
     }
   }

@@ -1,6 +1,6 @@
 import 'dart:developer';
 
-import 'package:awreportadmin/app/main_app.dart';
+import 'package:wootasali/app/main_app.dart';
 import 'package:flutter/material.dart';
 
 class AppLifecycleReactor extends StatefulWidget {
