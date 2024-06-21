@@ -1,2 +1,2 @@
-<h2 align="left">Flutter Framework revirpod starting templete</h2>
+<h2 align="left">Flutter Framework riverpod starting templete</h2>
 
